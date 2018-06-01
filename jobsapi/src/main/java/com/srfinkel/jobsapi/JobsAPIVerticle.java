@@ -4,11 +4,17 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 import io.vertx.core.Future;
+import io.vertx.core.Vertx;
 
 public class JobsAPIVerticle extends AbstractVerticle {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(JobsAPIVerticle.class);
 
+	public static void main(String[] args) {
+		Vertx vertx = Vertx.vertx();
+		vertx.deployVerticle(new JobsAPIVerticle());
+	}
+	
 	@Override
 	public void start(Future<Void> fut) {
 		LOGGER.info("Verticle JobsAPIVerticle Started");
