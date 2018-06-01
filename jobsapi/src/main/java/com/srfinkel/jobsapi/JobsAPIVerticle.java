@@ -7,6 +7,7 @@ import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
+import io.vertx.ext.web.handler.StaticHandler;
 
 public class JobsAPIVerticle extends AbstractVerticle {
 
@@ -27,6 +28,8 @@ public class JobsAPIVerticle extends AbstractVerticle {
 			HttpServerResponse response = routingContext.response();
 			response.putHeader("content-type", "text/html").end("<h1>Rest with Vertx</h1>");
 		});
+		
+		router.route("/assests/*").handler(StaticHandler.create("assets"));
 
 		vertx.createHttpServer().requestHandler(router::accept).listen(config().getInteger("http.port", 8080),
 				result -> {
