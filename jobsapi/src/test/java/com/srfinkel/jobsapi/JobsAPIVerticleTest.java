@@ -1,5 +1,6 @@
 package com.srfinkel.jobsapi;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
@@ -18,5 +19,11 @@ public class JobsAPIVerticleTest {
     vertx.deployVerticle(JobsAPIVerticle.class.getName(),
         context.asyncAssertSuccess());
   }
+  
+  @After
+  public void tearDown(TestContext context) {
+    vertx.close(context.asyncAssertSuccess());
+  }
+  
 }
   
