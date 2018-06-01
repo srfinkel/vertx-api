@@ -4,6 +4,7 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
+import io.vertx.core.Future;
 
 public class JobsAPIVerticle extends AbstractVerticle {
 
@@ -18,12 +19,12 @@ public class JobsAPIVerticle extends AbstractVerticle {
 	}
 	
 	@Override
-    public void start() {
+    public void start(Future<Void> fut) {
     	LOGGER.info("Verticle JobsAPIVerticle Started");
     	
-    	vertx.createHttpServer().requestHandler(request -> {
-    		request.response().end("<h1>Jobs Working</h1>");	
-    		}).listen(8080);
+//    	vertx.createHttpServer().requestHandler(request -> {
+//    		request.response().end("<h1>Jobs Working</h1>");	
+//    		}).listen(8080);
 	
 	}
     	
