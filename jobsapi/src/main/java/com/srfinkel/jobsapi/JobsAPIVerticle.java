@@ -20,7 +20,7 @@ public class JobsAPIVerticle extends AbstractVerticle {
 		LOGGER.info("Verticle JobsAPIVerticle Started");
 
 		vertx.createHttpServer().requestHandler(r -> {
-			r.response().end("<h1>Updated this Verticle</h1>");
+			r.response().end("<h1>Hello Updated this Verticle</h1>");
 		}).listen(config().getInteger("http.port", 8080), result -> {
 			if (result.succeeded()) {
 				fut.complete();
