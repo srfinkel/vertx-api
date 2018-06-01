@@ -34,7 +34,7 @@ public class JobsAPIVerticleTest {
     vertx.createHttpClient().getNow(8080, "localhost", "/",
      response -> {
       response.handler(body -> {
-        context.assertTrue(body.toString().contains("Hello"));
+        context.assertTrue(body.toString().contains("Vertx"));
         async.complete();
       });
     });
