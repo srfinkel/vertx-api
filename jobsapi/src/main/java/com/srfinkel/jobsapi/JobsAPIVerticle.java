@@ -10,13 +10,20 @@ public class JobsAPIVerticle extends AbstractVerticle {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JobsAPIVerticle.class);
 
 	public static void main( String[] args ) {
+		
 		Vertx vertx = Vertx.vertx();
+		
+		vertx.deployVerticle(new JobsAPIVerticle());
 
 	}
 	
 	@Override
     public void start() {
     	LOGGER.info("Verticle JobsAPIVerticle Started");
+    	
+    	vertx.createHttpServer().requestHandler(request -> {
+    		request.response().end("<h1>Jobs Working</h1>");	
+    		}).listen(8080);
 	
 	}
     	
