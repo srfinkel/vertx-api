@@ -22,13 +22,13 @@
 		<dependency>
 			<groupId>io.vertx</groupId>
 			<artifactId>vertx-core</artifactId>
-			<version>${vertx.version}</version>
+			<version>3.3.3</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.vertx</groupId>
 			<artifactId>vertx-web</artifactId>
-			<version>${vertx.version}</version>
+			<version>3.3.3</version>
 		</dependency>
 
 		<dependency>
@@ -40,7 +40,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -51,7 +51,7 @@
 				<!-- We specify the Maven compiler as we need to set it to Java 1.8 -->
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.1</version>
+					<version>3.3</version>
 					<configuration>
 						<source>1.8</source>
 						<target>1.8</target>
