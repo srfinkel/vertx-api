@@ -12,9 +12,9 @@ import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
+import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.StaticHandler;
 import io.vertx.core.json.Json;
-import io.vertx.core.json.JsonObject;
 
 public class JobsAPIVerticle extends AbstractVerticle {
 
@@ -45,6 +45,8 @@ public class JobsAPIVerticle extends AbstractVerticle {
 		router.route("/assests/*").handler(StaticHandler.create("assets"));
 		
 		router.get("/api/v1/jobs").handler(this::getAll);
+		router.route("/api/v1/jobs*").handler(BodyHandler.create());
+		router.get("/api/v1/jobs/:id").handler(this::getOne);
 
 		vertx.createHttpServer().requestHandler(router::accept).listen(config().getInteger("http.port", 8080),
 				result -> {
@@ -55,6 +57,23 @@ public class JobsAPIVerticle extends AbstractVerticle {
 					}
 				});
 	}
+	
+	private void getOne(RoutingContext routingContext) {
+		  final String id = routingContext.request().getParam("id");
+		  if(id == null) {
+			  routingContext.response().setStatusCode(400).end();
+		  } else {
+			  final Integer idAsInteger = Integer.valueOf(id);
+			  JobsData job = jobs.get(idAsInteger);
+			  if (job == null) {
+				  routingContext.response().setStatusCode(404).end();
+			  } else {
+				  routingContext.response()
+				  .putHeader("content-type", "application/json; charset=utf-8")
+				  .end(Json.encodePrettily(job));
+			  }
+		  }
+		}
 	
 	private void getAll(RoutingContext routingContext) {
 		  routingContext.response()
