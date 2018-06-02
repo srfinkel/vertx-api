@@ -1,5 +1,6 @@
 package com.srfinkel.jobsapi;
 
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -11,12 +12,16 @@ import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.StaticHandler;
+import io.vertx.core.json.Json;
+import io.vertx.core.json.JsonObject;
 
 public class JobsAPIVerticle extends AbstractVerticle {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(JobsAPIVerticle.class);
 
 	private Map<Integer, JobsData> jobs = new LinkedHashMap<>();
+
+	private Date date;
 	
 	public static void main(String[] args) {
 		Vertx vertx = Vertx.vertx();
@@ -26,6 +31,8 @@ public class JobsAPIVerticle extends AbstractVerticle {
 	@Override
 	public void start(Future<Void> fut) {
 		LOGGER.info("Verticle JobsAPIVerticle Started");
+		
+		createSomeJobs();
 
 		Router router = Router.router(vertx);
 
@@ -47,7 +54,7 @@ public class JobsAPIVerticle extends AbstractVerticle {
 	}
 	
 	private void createSomeJobs() {
-		JobsData magician = new JobsData("Magician Wanted", "magic, bunny, hat", Date date, 20, "experienced", "USA", "English", false, true, false);
+		JobsData magician = new JobsData("Magician Wanted", "magic, bunny, hat", date, 20, "experienced", "USA", "English", false, true, false);
 		jobs.put(magician.getId(), magician);
 		JobsData sorcerer = new JobsData("Hiring Sorcerer", "broom, wand", date, 25, "mid-level", "Australia", "English", true, false, false);
 		jobs.put(sorcerer.getId(), sorcerer);

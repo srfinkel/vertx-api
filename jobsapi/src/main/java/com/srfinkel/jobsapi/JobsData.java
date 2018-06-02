@@ -5,38 +5,38 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class JobsData {
 
-	  private static final AtomicInteger COUNTER = new AtomicInteger();
-	  
-	  private final int id;
-	  private String title;
-	  private String keyword;
-	  private Date date;
-	  private int rate;
-	  private String level;
-	  private String country;
-	  private String language;
-	  
-	  boolean fulltime;
-	  boolean parttime;
-	  boolean hourly;
-	  
-	  public JobsData(String title, String keyword, Date date, int rate, String level, String country, String language) {
-		  this.id = COUNTER.getAndIncrement();
-		  this.title = title;
-		  this.keyword = keyword;
-		  this.date = date;
-		  this.rate = rate;
-		  this.level = level;
-		  this.country = country;
-		  this.language = language;
-		  this.fulltime = false;
-		  this.parttime = false;
-		  this.hourly = false;
-	  }
-	  
-	  public JobsData() {
-		  this.id = COUNTER.getAndIncrement();
-	  }
+	private static final AtomicInteger COUNTER = new AtomicInteger();
+
+	private final int id;
+	private String title;
+	private String keyword;
+	private Date date;
+	private int rate;
+	private String level;
+	private String country;
+	private String language;
+
+	boolean fulltime;
+	boolean parttime;
+	boolean hourly;
+
+	public JobsData(String title, String keyword, Date date, int rate, String level, String country, String language, boolean fulltime, boolean parttime, boolean hourly) {
+		this.id = COUNTER.getAndIncrement();
+		this.title = title;
+		this.keyword = keyword;
+		this.date = getDate();
+		this.rate = rate;
+		this.level = level;
+		this.country = country;
+		this.language = language;
+		this.fulltime = false;
+		this.parttime = false;
+		this.hourly = false;
+	}
+
+	public JobsData() {
+		this.id = COUNTER.getAndIncrement();
+	}
 
 	public String getTitle() {
 		return title;
