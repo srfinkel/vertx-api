@@ -1,5 +1,8 @@
 package com.srfinkel.jobsapi;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
@@ -13,6 +16,8 @@ public class JobsAPIVerticle extends AbstractVerticle {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(JobsAPIVerticle.class);
 
+	private Map<Integer, JobsData> jobs = new LinkedHashMap<>();
+	
 	public static void main(String[] args) {
 		Vertx vertx = Vertx.vertx();
 		vertx.deployVerticle(new JobsAPIVerticle());
@@ -39,5 +44,12 @@ public class JobsAPIVerticle extends AbstractVerticle {
 						fut.fail(result.cause());
 					}
 				});
+	}
+	
+	private void createSomeJobs() {
+		JobsData magician = new JobsData("Magician Wanted", "magic, bunny, hat", Date date, 20, "experienced", "USA", "English", false, true, false);
+		jobs.put(magician.getId(), magician);
+		JobsData sorcerer = new JobsData("Hiring Sorcerer", "broom, wand", date, 25, "mid-level", "Australia", "English", true, false, false);
+		jobs.put(sorcerer.getId(), sorcerer);
 	}
 }
