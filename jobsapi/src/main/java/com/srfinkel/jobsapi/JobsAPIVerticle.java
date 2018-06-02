@@ -11,6 +11,7 @@ import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
+import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.StaticHandler;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
@@ -42,6 +43,8 @@ public class JobsAPIVerticle extends AbstractVerticle {
 		});
 		
 		router.route("/assests/*").handler(StaticHandler.create("assets"));
+		
+		router.get("/api/v1/jobs").handler(this::getAll);
 
 		vertx.createHttpServer().requestHandler(router::accept).listen(config().getInteger("http.port", 8080),
 				result -> {
@@ -52,6 +55,12 @@ public class JobsAPIVerticle extends AbstractVerticle {
 					}
 				});
 	}
+	
+	private void getAll(RoutingContext routingContext) {
+		  routingContext.response()
+		      .putHeader("content-type", "application/json; charset=utf-8")
+		      .end(Json.encodePrettily(jobs.values()));
+		}
 	
 	private void createSomeJobs() {
 		JobsData magician = new JobsData("Magician Wanted", "magic, bunny, hat", date, 20, "experienced", "USA", "English", false, true, false);
