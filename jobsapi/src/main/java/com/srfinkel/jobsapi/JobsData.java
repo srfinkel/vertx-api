@@ -62,11 +62,11 @@ public class JobsData {
 		this.date = date;
 	}
 
-	public String getRate() {
+	public int getRate() {
 		return rate;
 	}
 
-	public void setRate(String rate) {
+	public void setRate(int rate) {
 		this.rate = rate;
 	}
 
