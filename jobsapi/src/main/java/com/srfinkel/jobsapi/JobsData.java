@@ -11,7 +11,7 @@ public class JobsData {
 	  private String title;
 	  private String keyword;
 	  private Date date;
-	  private String rate;
+	  private int rate;
 	  private String level;
 	  private String country;
 	  private String language;
@@ -20,7 +20,7 @@ public class JobsData {
 	  boolean parttime;
 	  boolean hourly;
 	  
-	  public JobsData(String title, String keyword) {
+	  public JobsData(String title, String keyword, Date date, int rate, String level, String country, String language) {
 		  this.id = COUNTER.getAndIncrement();
 		  this.title = title;
 		  this.keyword = keyword;
