@@ -12,18 +12,113 @@ public class JobsData {
 	  private String keyword;
 	  private Date date;
 	  private String rate;
+	  private String level;
 	  private String country;
 	  private String language;
 	  
 	  boolean fulltime;
 	  boolean parttime;
+	  boolean hourly;
 	  
 	  public JobsData(String title, String keyword) {
 		  this.id = COUNTER.getAndIncrement();
 		  this.title = title;
 		  this.keyword = keyword;
 		  this.date = date;
+		  this.rate = rate;
+		  this.level = level;
+		  this.country = country;
+		  this.language = language;
 		  this.fulltime = false;
-		  this.parttime = false;	  
+		  this.parttime = false;
+		  this.hourly = false;
 	  }
+	  
+	  public JobsData() {
+		  this.id = COUNTER.getAndIncrement();
+	  }
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getRate() {
+		return rate;
+	}
+
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public boolean isFulltime() {
+		return fulltime;
+	}
+
+	public void setFulltime(boolean fulltime) {
+		this.fulltime = fulltime;
+	}
+
+	public boolean isParttime() {
+		return parttime;
+	}
+
+	public void setParttime(boolean parttime) {
+		this.parttime = parttime;
+	}
+
+	public boolean isHourly() {
+		return hourly;
+	}
+
+	public void setHourly(boolean hourly) {
+		this.hourly = hourly;
+	}
+
+	public int getId() {
+		return id;
+	}
 }
