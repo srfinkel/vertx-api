@@ -29,9 +29,9 @@ public class JobsData {
 		this.level = level;
 		this.country = country;
 		this.language = language;
-		this.fulltime = false;
-		this.parttime = false;
-		this.hourly = false;
+		this.fulltime = fulltime;
+		this.parttime = parttime;
+		this.hourly = hourly;
 	}
 
 	public JobsData() {
